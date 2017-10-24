@@ -31,6 +31,7 @@ First there's a 0-1024 byte preamble of random data, effectively an offset calcu
 
 ## Q and A
 Q: How secure is RabbitHole?
+
 A: That depends on the password you choose for your volumes. If you use a [strong password](https://en.wikipedia.org/wiki/Password_strength#Common_guidelines) it should be impossible to crack by brute force, taking millions of years on super computers (2^256 years, that's a 10 with 256 zeroes after it). A weak password will compromise security whichever cryptographic algorithm is used. If you plan on creating 2 or more volumes inside your archive for plausible deniability, at least ensure you are using a strong password for the second volume presumptively containing your real secrets. 
 
 
