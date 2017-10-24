@@ -7,7 +7,7 @@
 * Bouncy castle, trusted crypto
 * Any number of hidden volumes
 * Encrypted volumes indistinguishable from random data
-* Plausible deniability
+* Plausible deniability 
 * Very small code base, easily inspected and audited
 * Open source, free software
 
