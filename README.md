@@ -25,4 +25,7 @@ A volume can can contain any number of files with unique names. To keep the code
 Example: You have created an archive of a total of 100 MB, and created 3 volumes within. By default, the first archive will have allocated 50 MB, the second will have 25 MB, and the third will have 12.5 MB. However, because you have no more volumes after the third one, you can safely use the remaining space for the third volume, allowing it 25 MB in total. But if you try to add more than 12.5 MB in the third volume, it will prompt you for confirmation, because it doesn't know whether you have a fourth volume or not (or any other number of successive volumes). So in effect, only the last volume can exceed its default allocated space. The software will allow you to exceed the default allocation if confirmed, but if you do this on any volume other than the last, all successive volumes will be corrupted and forever lost. 
 
 A single volume is constructed in the following way:
+First there's a 0-1024 byte preamble of random data, effectively an offset calculated from the hash of the password. Then there is 32 bytes for the [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector) (IV), followed by 4 bytes describing the length of the following encrypted data. Lastly the encrypted data follows.  
+
+![diagram2](https://github.com/eflite/RabbitHole/blob/master/RabbitHoleDiagram2.png)
 
