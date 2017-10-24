@@ -27,5 +27,5 @@ Example: You have created an archive of a total of 100 MB, and created 3 volumes
 A single volume is constructed in the following way:
 First there's a 0-1024 byte preamble of random data, effectively an offset calculated from the hash of the password. Then there is 32 bytes for the [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector) (IV), followed by 4 bytes describing the length of the following encrypted data. Lastly the encrypted data follows.  
 
-![diagram2](https://github.com/eflite/RabbitHole/blob/master/RabbitHoleDiagram2.png)
+![diagram2](https://github.com/eflite/RabbitHole/blob/master/rabbitHoleDiagram2.png)
 
