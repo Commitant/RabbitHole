@@ -29,3 +29,8 @@ First there's a 0-1024 byte preamble of random data, effectively an offset calcu
 
 ![diagram2](https://github.com/eflite/RabbitHole/blob/master/rabbitHoleDiagram2.png)
 
+## Q and A
+### Q: How secure is RabbitHole?
+A: That depends on the password you choose for your volumes. If you use a [strong password](https://en.wikipedia.org/wiki/Password_strength#Common_guidelines) it should be impossible to crack by brute force, taking millions of years on super computers (2^256 years, that's a 10 with 256 zeroes after it). 
+
+
