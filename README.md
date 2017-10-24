@@ -32,6 +32,17 @@ First there's a 0-1024 byte preamble of random data, effectively an offset calcu
 ## Q and A
 Q: How secure is RabbitHole?
 
-A: That depends on the password you choose for your volumes. If you use a [strong password](https://en.wikipedia.org/wiki/Password_strength#Common_guidelines) it should be impossible to crack by brute force, taking millions of years on super computers (2^256 years, that's a 10 with 256 zeroes after it). A weak password will compromise security whichever cryptographic algorithm is used. If you plan on creating 2 or more volumes inside your archive for plausible deniability, at least ensure you are using a strong password for the second volume presumptively containing your real secrets. 
+A: That depends on the password you choose for your volumes. If you use a [strong password](https://en.wikipedia.org/wiki/Password_strength#Common_guidelines) it should be impossible to crack by brute force, taking millions of years on super computers (2^256 years, that's a 10 with 256 zeroes after it). A weak password will compromise security whichever cryptographic algorithm is used. If you plan on creating 2 or more volumes inside your archive for plausible deniability, at least ensure you are using a strong password for the second volume presumptively containing your real secrets. That being said, all crypto tools need code review and audit. If you're a crypto expert or you know one, you're very much welcome to inspect the open source code. If you would like to contribute to the project, please let us know. 
 
+Q: There's other tools for encrypting files and archives out there. Why should I use RabbitHole?
+
+A: We think the combination of properties make the tool interesting. The open source nature and small code base makes the application very easy to review, audit and verify. Plausible deniability through multiple volumes, strong encryption through AES 256 and Bouncy Castle makes it safe and secure. 
+
+Q: What it plausible deniablity, and why do I need it?
+
+A: Plausible deniablity, or is this case deniable cryptography, describes encryption techniques where the existence of an encrypted file or message is deniable in the sense that an adversary cannot prove that the plaintext data exists. Let's say an adversary ceases your file archive, and demands that you provide the password. If you claim that there's zero volumes in the archive, or that you've forgotten the password, most would probably deem this an implausible denial. However, if you have created multiple volumes, you could safely give up the password to your safe volume, keeping your real secrets safe. And while your adversary may suspect the existence of multiple volumes, he has no way to prove it, and he can never be sure. 
+
+Q: I've lost my password(s), can you help?
+
+A: No, you're thoroughly out of luck. No one in the whole world can help you. 
 
