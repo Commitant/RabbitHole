@@ -38,9 +38,9 @@ Q: There's other tools for encrypting files and archives out there. Why should I
 
 A: We think the combination of properties make the tool interesting. The open source nature and small code base makes the application very easy to review, audit and verify. Plausible deniability through multiple volumes, strong encryption through AES 256 and Bouncy Castle makes it safe and secure. 
 
-Q: What it plausible deniablity, and why do I need it?
+Q: What is plausible deniablity, and why do I need it?
 
-A: Plausible deniablity, or is this case deniable cryptography, describes encryption techniques where the existence of an encrypted file or message is deniable in the sense that an adversary cannot prove that the plaintext data exists. Let's say an adversary ceases your file archive, and demands that you provide the password. If you claim that there's zero volumes in the archive, or that you've forgotten the password, most would probably deem this an implausible denial. However, if you have created multiple volumes, you could safely give up the password to your safe volume, keeping your real secrets safe. And while your adversary may suspect the existence of multiple volumes, he has no way to prove it, and he can never be sure. 
+A: Plausible deniablity, or is this case deniable cryptography, describes encryption techniques where the existence of an encrypted file or message is deniable in the sense that an adversary cannot prove that the plaintext data exists. In many countries around the world, such as UK, [you will land in jail](https://www.theverge.com/2017/5/17/15653786/rabbani-encryption-password-charged-terrorism-uk-airport) for not giving up your password if demanded by law enforcement. Let's say an adversary ceases your file archive, and demands that you provide the password. If you claim that there's zero volumes in the archive, or that you've forgotten the password, most would probably deem this an implausible denial. However, if you have created multiple volumes, you could safely give up the password to your safe volume, keeping your real secrets safe. And while your adversary may suspect the existence of multiple volumes, he has no way to prove it, and he can never be sure. 
 
 Q: I've lost my password(s), can you help?
 
