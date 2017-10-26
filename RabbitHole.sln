@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitHole", "RabbitHole\RabbitHole.csproj", "{A936A724-E89B-45C7-924E-DED8205CAA6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A936A724-E89B-45C7-924E-DED8205CAA6F} = {A936A724-E89B-45C7-924E-DED8205CAA6F}
+	EndProjectSection
+EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "RabbitHoleInstaller", "RabbitHoleInstaller\RabbitHoleInstaller.isproj", "{374BF8F9-C739-4CBB-A145-06BFE5ACB708}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A936A724-E89B-45C7-924E-DED8205CAA6F} = {A936A724-E89B-45C7-924E-DED8205CAA6F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{A936A724-E89B-45C7-924E-DED8205CAA6F}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{556EA3F6-CE7E-4227-A070-0FEA58D2FD54}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.Debug|Any CPU.ActiveCfg = DVD-5
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.Debug|Any CPU.Build.0 = DVD-5
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.DVD-5|Any CPU.Build.0 = DVD-5
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.Release|Any CPU.ActiveCfg = SingleImage
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.Release|Any CPU.Build.0 = SingleImage
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{374BF8F9-C739-4CBB-A145-06BFE5ACB708}.SingleImage|Any CPU.Build.0 = SingleImage
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
