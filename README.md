@@ -11,6 +11,9 @@
 * Very small code base, easily inspected and audited
 * Open source, free software (GNU GPL v3)
 
+## How to use
+Check out the [How To Use](https://github.com/eflite/RabbitHole/wiki/How-To-Use)
+
 ## Introduction
 Inspired by TrueCrypt and similar software, this application offers serious encryption for your files through a command line tool for Windows. It's uses [BouncyCastle 1.8.1](https://en.wikipedia.org/wiki/Bouncy_Castle_(cryptography)), an acclaimed crypto library providing strong encryption. Because your file archive is first populated with random data, any encrypted volumes you create inside are indistinguishable from the random data. Thus there is no way to ascertain whether you have 0, 1, 2 or 20 volumes within your archive. This gives you [plausible deniability](https://en.wikipedia.org/wiki/Plausible_deniability#Use_in_cryptography), so that an adversary cannot prove or be sure that any encrypted volume exists. A typical way to use this is to create at least 2 volumes, one that you can safely decrypt and reveal should you be forced to, and one that contains your real secrets and which existence you can plausibly deny. For a cryptography tool to have any value we believe is has to be open source software, so users and experts can inspect the code and make sure no vulnerabilities or back doors exist. That is why this project is released under the open source GPLv3 lisence. For maximum security, download the source code, download the [Bouncy Castle crypto library for C#](https://www.nuget.org/packages/BouncyCastle.Crypto.dll/) and compile it yourself.   
 
@@ -33,15 +36,24 @@ First there's a 0-1024 byte preamble of random data, effectively an offset calcu
 Q: How secure is RabbitHole?
 
 A: That depends on the password you choose for your volumes. If you use a [strong password](https://en.wikipedia.org/wiki/Password_strength#Common_guidelines) it should be impossible to crack by brute force, taking millions of years on super computers. A weak password will compromise security whichever cryptographic algorithm is used. If you plan on creating 2 or more volumes inside your archive for plausible deniability, at least ensure you are using a strong password for the second volume presumably containing your real secrets. That being said, all crypto tools need code review and audit. If you're a crypto expert or you know one, you're very much welcome to inspect the open source code. If you would like to contribute to the project, please let us know. 
-
+***
 Q: There's other tools for encrypting files and archives out there. Why should I use RabbitHole?
 
 A: We think the combination of properties make the tool interesting. The open source nature and small code base makes the application very easy to review, audit and verify. Plausible deniability through multiple volumes, strong encryption through AES 256 and Bouncy Castle makes it safe and secure. 
-
+***
 Q: What is plausible deniablity, and why do I need it?
 
-A: Plausible deniablity, or is this case deniable cryptography, describes encryption techniques where the existence of an encrypted file or message is deniable in the sense that an adversary cannot prove that the plaintext data exists. In many countries around the world, such as UK, [you will land in jail](https://www.theverge.com/2017/5/17/15653786/rabbani-encryption-password-charged-terrorism-uk-airport) for not giving up your password if demanded by law enforcement, even if you're not suspected of any wrongdoing. Let's say an adversary ceases your file archive, and demands that you provide the password. If you claim that there's zero volumes in the archive, or that you've forgotten the password, most would probably not believe you. However, if you have created multiple volumes, you could safely give up the password to your safe volume, keeping your real secrets safe. And while your adversary may suspect the existence of multiple volumes, he has no way to prove it, and he can never be sure. 
+A: Plausible deniablity, or is this case deniable cryptography, describes encryption techniques where the existence of an encrypted file or message is deniable in the sense that an adversary cannot prove that the plaintext data exists. In many countries around the world, such as the UK, [you will land in jail](https://www.theverge.com/2017/5/17/15653786/rabbani-encryption-password-charged-terrorism-uk-airport) for not giving up your password if demanded by law enforcement, even if you're not suspected of any wrongdoing. Let's say an adversary ceases your file archive, and demands that you provide the password. If you claim that there's zero volumes in the archive, or that you've forgotten the password, most would probably not believe you. However, if you have created multiple volumes, you could safely give up the password to your safe volume, keeping your real secrets safe. And even if your adversary suspects the existence of multiple volumes, he has no way to know for sure, he has no way to find out, and he has no way to prove it.
+***
+Q: How many volumes should I create within one archive?
 
+A: If you don't need plausible deniability you can create just a single volume, and use the entire archive space for your encrypted files. If you want plausible deniablity you should create 2 or more volumes. How many is a matter of preference, but 2 is sufficient for plausible deniability. The idea is that you have at least one volume which you can give up if pressed to do so, and at least one hidden volume which existence is impossible to establish or prove. But more volumes require more passwords to remember, and the password for your hidden volume(s) should be totally different from your dummy volume(s).  
+***
+Q: How should I create my passwords?
+
+A: If you want plausible deniability you need at least 2 volumes, and two COMPLETELY different passwords. If ever pressed by a competent adversary to reveal the password to your dummy volume, you can be sure they will try bruteforcing your potential hidden volumes by creating variations over that password. You can get away with having weak passwords for your dummy volumes though, if it doesn't matter if they are brute force cracked. Example: Your two dummy volumes could have the passwords someSimplePassword1 and someSimplePassword2, while your hidden volume has the password ¤€&theSupr%SecrtPa$$w├rd.
+
+***
 Q: I've lost my password(s), can you help?
 
 A: No, you're thoroughly out of luck. No one in the whole world can help you. 
