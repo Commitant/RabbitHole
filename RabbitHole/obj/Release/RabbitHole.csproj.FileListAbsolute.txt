@@ -1,0 +1,6 @@
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Release\RabbitHole.exe.config
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Release\RabbitHole.exe
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Release\RabbitHole.pdb
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Release\BouncyCastle.Crypto.dll
+C:\Google Drive\develop\RabbitHole\RabbitHole\obj\Release\RabbitHole.exe
+C:\Google Drive\develop\RabbitHole\RabbitHole\obj\Release\RabbitHole.pdb

@@ -1,0 +1,7 @@
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Release\DeepCrypt.exe.config
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Release\DeepCrypt.exe
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Release\DeepCrypt.pdb
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Release\BouncyCastle.Crypto.dll
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\obj\Release\DeepCrypt.exe
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\obj\Release\DeepCrypt.pdb
+D:\Google Drive\develop\DeepCrypt\DeepCrypt\obj\Release\DeepCrypt.csprojResolveAssemblyReference.cache

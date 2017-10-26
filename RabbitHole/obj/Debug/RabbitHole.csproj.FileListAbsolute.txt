@@ -1,0 +1,12 @@
+C:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Debug\DeepCrypt.exe.config
+C:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Debug\DeepCrypt.exe
+C:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Debug\BouncyCastle.Crypto.dll
+C:\Google Drive\develop\DeepCrypt\DeepCrypt\obj\Debug\DeepCrypt.exe
+C:\Google Drive\develop\DeepCrypt\DeepCrypt\obj\Debug\DeepCrypt.pdb
+C:\Google Drive\develop\DeepCrypt\DeepCrypt\bin\Debug\DeepCrypt.pdb
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Debug\RabbitHole.exe.config
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Debug\RabbitHole.exe
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Debug\RabbitHole.pdb
+C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Debug\BouncyCastle.Crypto.dll
+C:\Google Drive\develop\RabbitHole\RabbitHole\obj\Debug\RabbitHole.exe
+C:\Google Drive\develop\RabbitHole\RabbitHole\obj\Debug\RabbitHole.pdb
