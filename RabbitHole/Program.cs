@@ -69,6 +69,10 @@ namespace RabbitHole
                     {
                         DisplayHelpScreen();
                     }
+                    else if (parts[0].Equals("howto"))
+                    {
+                        Process.Start("https://github.com/eflite/RabbitHole/wiki/How-To-Use");
+                    }
                     else
                     {
                         Console.WriteLine("Unknown command " + parts[0] + ". For help on use, write help or ?");
@@ -97,7 +101,9 @@ namespace RabbitHole
             Console.WriteLine("{0,-8}{1,-30}{2,-30}", "get", "<file in archive>", "<destination path and file name>");
             Console.WriteLine("{0,-8}{1,-30}", "delete", "<file in archive>");
             Console.WriteLine("{0,-8}{1,-30}", "save", "<password for current volume>");
-
+            Console.WriteLine("{0,-8}", "exit");
+            Console.WriteLine("{0,-8}", "howto");
+            
         }
 
         private static void DisplayArchiveAndVolumeNames()
