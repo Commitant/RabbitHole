@@ -10,3 +10,9 @@ C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Debug\RabbitHole.pdb
 C:\Google Drive\develop\RabbitHole\RabbitHole\bin\Debug\BouncyCastle.Crypto.dll
 C:\Google Drive\develop\RabbitHole\RabbitHole\obj\Debug\RabbitHole.exe
 C:\Google Drive\develop\RabbitHole\RabbitHole\obj\Debug\RabbitHole.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\RabbitHole.exe.config
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Debug\RabbitHole.exe
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Debug\RabbitHole.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\RabbitHole.exe
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\RabbitHole.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\BouncyCastle.Crypto.dll

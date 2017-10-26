@@ -254,7 +254,7 @@ namespace RabbitHole
 
         private static void CreateNewArchive(string[] parts)
         {
-            
+                        
             if (!(parts.Length == 3 && IsNumber(parts[2])))
             {
                 Console.WriteLine("new keyword usage: new <fileName> <size in MB>, example: new myArchive 10" );
@@ -268,6 +268,14 @@ namespace RabbitHole
                 Console.WriteLine("\nFile allready exists");
                 return;
             }
+
+            if (!HasWritePermissionsToFolder(fileName))
+            {
+                Console.WriteLine("You don't seem to have write-permissions to the folder. Open the application as administrator by " +
+                                  "right clicking on the .exe-file and choosing \"Run as Administrator\", or specify a path to another folder");
+                return;
+            }
+
 
             byte[] entropyBytes =  CollectRandomInput();
 
@@ -303,6 +311,32 @@ namespace RabbitHole
 
 
 
+        }
+
+        private static bool HasWritePermissionsToFolder(string fileName)
+        {
+            fileName += fileName + ".test";
+
+            try
+            {
+                var binaryWriter = new BinaryWriter(new FileStream(fileName, FileMode.CreateNew));
+                binaryWriter.Write(" ");
+                binaryWriter.Flush();
+                binaryWriter.Close();
+
+
+                if (System.IO.File.Exists(fileName))
+                {
+                    System.IO.File.Delete(fileName);
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public static void SetProgress(double percent)

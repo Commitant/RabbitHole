@@ -108,7 +108,7 @@ namespace UnitTestProject1
         public void TestArchiveOperations()
         {
             //create file on disk
-            var fileName = "testArchive2.Rabbit";
+            var fileName = "c:\\temp\\testArchive2.Rabbit"; //
 
             if (File.Exists(fileName))
                 File.Delete(fileName);
