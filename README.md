@@ -36,15 +36,19 @@ First there's a 0-1024 byte preamble of random data, effectively an offset calcu
 Q: How secure is RabbitHole?
 
 A: That depends on the password you choose for your volumes. If you use a [strong password](https://en.wikipedia.org/wiki/Password_strength#Common_guidelines) it should be impossible to crack by brute force, taking millions of years on super computers. A weak password will compromise security whichever cryptographic algorithm is used. If you plan on creating 2 or more volumes inside your archive for plausible deniability, at least ensure you are using a strong password for the second volume presumably containing your real secrets. That being said, all crypto tools need code review and audit. If you're a crypto expert or you know one, you're very much welcome to inspect the open source code. If you would like to contribute to the project, please let us know. 
-
+***
 Q: There's other tools for encrypting files and archives out there. Why should I use RabbitHole?
 
 A: We think the combination of properties make the tool interesting. The open source nature and small code base makes the application very easy to review, audit and verify. Plausible deniability through multiple volumes, strong encryption through AES 256 and Bouncy Castle makes it safe and secure. 
-
+***
 Q: What is plausible deniablity, and why do I need it?
 
 A: Plausible deniablity, or is this case deniable cryptography, describes encryption techniques where the existence of an encrypted file or message is deniable in the sense that an adversary cannot prove that the plaintext data exists. In many countries around the world, such as UK, [you will land in jail](https://www.theverge.com/2017/5/17/15653786/rabbani-encryption-password-charged-terrorism-uk-airport) for not giving up your password if demanded by law enforcement, even if you're not suspected of any wrongdoing. Let's say an adversary ceases your file archive, and demands that you provide the password. If you claim that there's zero volumes in the archive, or that you've forgotten the password, most would probably not believe you. However, if you have created multiple volumes, you could safely give up the password to your safe volume, keeping your real secrets safe. And while your adversary may suspect the existence of multiple volumes, he has no way to prove it, and he can never be sure. 
+***
+Q: How many volumes should I create within one archive?
 
+A: If you don't need plausible deniability you can create just a single volume, and use the entire archive space for your encrypted files. If you want plausible deniablity you should create 2 or more volumes. How many is a matter of preference, but 2 is sufficient for plausible deniability. The idea is that you have at least one volume which you can give up if pressed to do so, and at least one hidden volume which existence is impossible to establish or prove. In some countries you can get prosecuted for not providing a password or claiming you have forgotten it, and criminals can threaten or beat you to give up your password. But more volumes require more passwords to remember, and the password for your hidden volume(s) should be totally different from your dummy volume(s). You can get away with having weak passwords for your dummy volumes though, if it doesn't matter if they are brute force cracked. Example: Your two dummy volumes could have the passwords someSimplePassword1 and someSimplePassword2, while your hidden volume has the password ¤€&SomeSupr%SecrtPa$$word. 
+***
 Q: I've lost my password(s), can you help?
 
 A: No, you're thoroughly out of luck. No one in the whole world can help you. 
