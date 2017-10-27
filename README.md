@@ -12,7 +12,7 @@
 * Open source, free software (GNU GPL v3)
 
 ## Getting started
-Get started by downloading the [latest release](https://github.com/eflite/RabbitHole/releases/tag/latest). For maximum security you may opt to download the source code and compile it yourself. 
+Get started by downloading the [latest release](https://github.com/eflite/RabbitHole/releases/latest). For maximum security you may opt to download the source code and compile it yourself. 
 
 ## How to use
 Check out the [How To Use](https://github.com/eflite/RabbitHole/wiki/How-To-Use)
