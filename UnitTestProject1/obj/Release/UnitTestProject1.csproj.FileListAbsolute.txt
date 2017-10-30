@@ -16,3 +16,12 @@ C:\Google Drive\develop\RabbitHole\UnitTestProject1\bin\Release\RabbitHole.pdb
 C:\Google Drive\develop\RabbitHole\UnitTestProject1\obj\Release\UnitTestProject1.csprojResolveAssemblyReference.cache
 C:\Google Drive\develop\RabbitHole\UnitTestProject1\obj\Release\UnitTestProject1.dll
 C:\Google Drive\develop\RabbitHole\UnitTestProject1\obj\Release\UnitTestProject1.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\bin\Release\UnitTestProject1.dll
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\bin\Release\UnitTestProject1.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\bin\Release\BouncyCastle.Crypto.dll
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\bin\Release\RabbitHole.exe
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\bin\Release\RabbitHole.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\obj\Release\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\obj\Release\UnitTestProject1.dll
+C:\Google Drive\develop\GitRepos\RabbitHole\UnitTestProject1\obj\Release\UnitTestProject1.pdb

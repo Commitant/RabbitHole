@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("RabbitHole")]
-[assembly: AssemblyDescription("Secure file archvive with deniabale plausibility")]
+[assembly: AssemblyDescription("AES-256 encrypted file archive with any number of hidden volumes for plausible deniability.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Espen Skjervold")]
+[assembly: AssemblyCompany("Commitant")]
 [assembly: AssemblyProduct("RabbitHole")]
-[assembly: AssemblyCopyright("Copyright © Espen Skjervold  2017")]
+[assembly: AssemblyCopyright("Commitant, GPL v.3")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

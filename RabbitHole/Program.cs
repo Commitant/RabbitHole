@@ -101,8 +101,9 @@ namespace RabbitHole
             Console.WriteLine("{0,-8}{1,-30}{2,-30}", "get", "<file in archive>", "<destination path and file name>");
             Console.WriteLine("{0,-8}{1,-30}", "delete", "<file in archive>");
             Console.WriteLine("{0,-8}{1,-30}", "save", "<password for current volume>");
-            Console.WriteLine("{0,-8}", "exit");
             Console.WriteLine("{0,-8}", "howto");
+            Console.WriteLine("{0,-8}", "exit");
+            
             
         }
 
@@ -267,7 +268,9 @@ namespace RabbitHole
                 return;
             }
 
-            var fileName = parts[1] + ".Rabbit";
+            var fileName = parts[1];
+            if (!fileName.ToLower().EndsWith(".rabbit"))
+                fileName += ".rabbit";
 
             if (System.IO.File.Exists(fileName))
             {
@@ -321,7 +324,7 @@ namespace RabbitHole
 
         private static bool HasWritePermissionsToFolder(string fileName)
         {
-            fileName += fileName + ".test";
+            fileName += ".test";
 
             try
             {

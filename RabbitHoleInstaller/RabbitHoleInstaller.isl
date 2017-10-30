@@ -60,8 +60,8 @@
 		<lastauthor>Administrator</lastauthor>
 		<revnumber>{F808E723-265B-4320-96E2-9321804241E7}</revnumber>
 		<lastprinted/>
-		<createdtm>06/21/1999 15:00</createdtm>
-		<lastsavedtm>07/14/2000 18:50</lastsavedtm>
+		<createdtm>06/21/1999 14:00</createdtm>
+		<lastsavedtm>07/14/2000 17:50</lastsavedtm>
 		<pagecount>200</pagecount>
 		<wordcount>0</wordcount>
 		<charcount/>
@@ -1178,6 +1178,8 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
+		<row><td>commit_1_commitant</td><td>ProgramMenuFolder</td><td>COMMIT~1|Commitant</td><td/><td>1</td><td/></row>
+		<row><td>rabbit_1_rabbithole</td><td>commit_1_commitant</td><td>RABBIT~1|RabbitHole</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -3427,6 +3429,9 @@
 		<row><td>IDS_PROGMSG_XML_UPDATE_FILE</td><td>1033</td><td>Updating XML file %s...</td><td>0</td><td/><td>-718948182</td></row>
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>-718948182</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>-718948182</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-182115864</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-182097400</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>RabbitHole</td><td>0</td><td/><td>-182076728</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>-718948182</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>-718948182</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-718948182</td></row>
@@ -3963,7 +3968,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{020A92E3-8523-4BAD-B083-6FB5945F0FF0}</td></row>
 		<row><td>ISUSSignature</td><td>{9DAF912F-AE5C-4390-8CCA-986E25156454}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewRelease,viewISToday,viewAppFiles,viewUI</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewRelease,viewISToday,viewAppFiles,viewUI,viewProject,viewSystemSearch,viewUpgradePaths,viewUpdateService,viewShortcuts</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4311,6 +4316,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>LAUNCHPROGRAMCOMPCODE</td><td>{D436F738-B24D-417E-B8B2-DC29BEBDB3FB}</td><td/></row>
 		<row><td>LAUNCHPROGRAMFILEKEY</td><td>rabbithole.primary_output</td><td/></row>
 		<row><td>LAUNCHREADME</td><td>1</td><td/></row>
+		<row><td>MSIFASTINSTALL</td><td>3</td><td/></row>
 		<row><td>Manufacturer</td><td>##COMPANY_NAME##</td><td/></row>
 		<row><td>PIDKEY</td><td/><td/></row>
 		<row><td>PIDTemplate</td><td>12345&lt;###-%%%%%%%&gt;@@@@@</td><td/></row>
@@ -4339,7 +4345,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]RabbitHole.Primary output</td><td/></row>
 		<row><td>ProductCode</td><td>{9527FB6C-9E11-4CC9-83A6-41277D8EE423}</td><td/></row>
-		<row><td>ProductName</td><td>RabbitHoleInstaller</td><td/></row>
+		<row><td>ProductName</td><td>RabbitHole</td><td/></row>
 		<row><td>ProductVersion</td><td>0.1.1</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
@@ -4416,6 +4422,9 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
+		<row><td>FileKey1</td><td>RabbitHole.Primary_output</td><td/><td>commit_1_commitant</td><td>2</td></row>
+		<row><td>FileKey2</td><td>RabbitHole.Primary_output</td><td/><td>rabbit_1_rabbithole</td><td>2</td></row>
+		<row><td>_Built</td><td>RabbitHole.Primary_output</td><td/><td>rabbit_1_rabbithole</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4501,6 +4510,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>_Built</td><td>rabbit_1_rabbithole</td><td>##IDS_SHORTCUT_DISPLAY_NAME3##</td><td>RabbitHole.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
