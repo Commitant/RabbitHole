@@ -55,6 +55,7 @@ A: If you don't need plausible deniability you can create just a single volume, 
 Q: How should I create my passwords?
 
 A: If you want plausible deniability you need at least 2 volumes, and two COMPLETELY different passwords. If ever pressed by a competent adversary to reveal the password to your dummy volume, you can be sure they will try bruteforcing your potential hidden volumes by creating variations over that password. You can get away with having weak passwords for your dummy volumes though, if it doesn't matter if they are brute force cracked. Example: Your two dummy volumes could have the passwords someSimplePassword1 and someSimplePassword2, while your hidden volume has the password ¤€&theSupr%SecrtPa$$w├rd.
+Tip: RabbitHole supports using alt-codes, which allows you to use the entire 8 bit character space when inputing characters for your password. When asked to enter special characters most people combine Ctrl or Shift together with a number from 0 through 9, but by pressing the Alt-key and entering a 3 digit number on your keyboard's numeric keypad, you can utilize characters rarely used in human-made keys. E.g the code Alt-167 creates the symbol º, and Alt-168 creates the symbol ¿. By including some of these in your password you will make brute force and dictionary attacks much harder to do. 
 
 ***
 Q: I've lost my password(s), can you help?
