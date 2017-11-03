@@ -19,7 +19,7 @@ namespace RabbitHole
 
         static void Main(string[] args)
         {
-            Console.WriteLine("          ---=== RabbitHole v.0.1.2 Commitant 2017 ===---");
+            Console.WriteLine("          ---=== RabbitHole v.0.1.3 Commitant 2017 ===---");
 
             DisplayArchiveAndVolumeNames();
 
@@ -248,8 +248,8 @@ namespace RabbitHole
 
 
             Console.WriteLine("Finished creating archive.");
-
-            Console.WriteLine("Please choose crypto algoritm: 1=AES, 2=Serpent, 3=Twofish");
+      
+            Console.Write("Please choose crypto algoritm: 1=AES, 2=Serpent, 3=Twofish: ");
             var algorithmNo = int.Parse((Console.ReadLine()));
             
 

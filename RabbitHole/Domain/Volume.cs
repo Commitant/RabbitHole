@@ -98,7 +98,7 @@ namespace RabbitHole.Domain
         {
             MemoryStream memoryStream = new MemoryStream();
             Volume volume = new Volume();
-            volume.Serialize(memoryStream, "test", 1);
+            volume.Serialize(memoryStream, "test", AlgorithmNo);
 
             return (int)memoryStream.Length - volume.Offset;
         }
