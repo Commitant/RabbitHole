@@ -20,15 +20,17 @@ namespace RabbitHole.Domain
         public Volume CurrentVolume { get; set; }
         public Func<String, bool> UserConfirmationFunc { get; set; }
 
+        public int AlgorithmNo { get; set; } = 1;
+
+
         public Archive(String name, String fileName, int noOfBytesInArchive)
         {
             Name = name;
             FileName = fileName;
-            _noOfBytesInArchive = noOfBytesInArchive;
-
+            _noOfBytesInArchive = noOfBytesInArchive;            
         }
 
-        public void CreateVolumes(params String[] volumePasswords)
+        public void CreateVolumes(int algorithmNo, params String[] volumePasswords)
         {
 
             int volumePosition = 0;
@@ -38,7 +40,7 @@ namespace RabbitHole.Domain
             {
                 var volume = new Volume(volumePosition);
                 _volumes.Add(volume);
-                volume.WriteToFile(binaryWriter.BaseStream, password);
+                volume.WriteToFile(binaryWriter.BaseStream, password, algorithmNo);
 
                 volumePosition += (_noOfBytesInArchive - volumePosition)/2;   //each successive volume starts at the half point of the previous volumes size
             }    
@@ -51,7 +53,7 @@ namespace RabbitHole.Domain
         public void WriteCurrentVolumeToFile(String password)
         {
             var binaryWriter = new BinaryWriter(new FileStream(FileName, FileMode.Open));
-            CurrentVolume.WriteToFile(binaryWriter.BaseStream, password);
+            CurrentVolume.WriteToFile(binaryWriter.BaseStream, password, AlgorithmNo);
             binaryWriter.Flush();
             binaryWriter.Close();
         }
@@ -72,6 +74,7 @@ namespace RabbitHole.Domain
                 if (volume != null)
                 {
                     volume.VolumeName = "Volume" + (volumeNo +1);
+                    AlgorithmNo = volume.AlgorithmNo;
                     volume.VolumePosition = volumePosition;
                     volume.VolumeNo = volumeNo;
                     CurrentVolume = volume;
@@ -110,7 +113,7 @@ namespace RabbitHole.Domain
             var binaryWriter = new BinaryWriter(new FileStream(FileName, FileMode.Open));
             binaryWriter.BaseStream.Seek(CurrentVolume.VolumePosition, SeekOrigin.Begin);
 
-            CurrentVolume.WriteToFile(binaryWriter.BaseStream, password);
+            CurrentVolume.WriteToFile(binaryWriter.BaseStream, password, AlgorithmNo);
           
             binaryWriter.Flush();
             binaryWriter.Close();
@@ -126,5 +129,7 @@ namespace RabbitHole.Domain
             binaryWriter.Flush();
             binaryWriter.Close();
         }
+
+        
     }
 }

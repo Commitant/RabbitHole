@@ -19,7 +19,7 @@ namespace RabbitHole
 
         static void Main(string[] args)
         {
-            Console.WriteLine("          ---=== RabbitHole v.0.1.1 Espen Skjervold 2017 ===---");
+            Console.WriteLine("          ---=== RabbitHole v.0.1.2 Commitant 2017 ===---");
 
             DisplayArchiveAndVolumeNames();
 
@@ -46,7 +46,7 @@ namespace RabbitHole
                     }
                     else if (parts[0].Equals("put"))
                     {
-                        addFile(parts);
+                        AddFile(parts);
                         listFiles();
                     }
                     else if (parts[0].Equals("new"))
@@ -117,24 +117,13 @@ namespace RabbitHole
 
         private static void DeleteFile(string[] parts)
         {
-            if (parts.Length < 2)
-            {
-                Console.WriteLine("delete keyword usage: delete <file in archive>");
-                return;
-            }
-            
-            if (_currentArchive == null || _currentArchive.CurrentVolume == null)
-            {
-                Console.WriteLine("No volume openend. Please open archive and volume using the open keyword");
-                return;
-            }
+            if (!Validates(() => parts.Length == 2, "delete keyword usage: delete <file in archive>")) return;
 
-            if (!_currentArchive.CurrentVolume.Folder.ContainsFile(parts[1]))
-            {
-                Console.WriteLine("File " + parts[1] + " not found in current archive/volume. Use command list to view volume contents");
-                return;
-            }
+            if (!Validates(() => _currentArchive !=null && _currentArchive.CurrentVolume != null, "No volume openend. Please open archive and volume using the open keyword")) return;
 
+            if (!Validates(() => _currentArchive.CurrentVolume.Folder.ContainsFile(parts[1]), "File " + parts[1] + " not found in " + _currentArchive.CurrentVolume.VolumeName +". Use list command to view volume contents")) return;
+
+           
             _currentArchive.CurrentVolume.Folder.DeleteFile(parts[1]);
 
             Console.WriteLine("File " + parts[1] +" deleted from current archive");
@@ -142,30 +131,15 @@ namespace RabbitHole
 
         private static void ExtractFileFromArchive(string[] parts)
         {
-            if (parts.Length < 3)
-            {
-                Console.WriteLine("get keyword usage: get <file in archive> <destination path and filename>");
-                return;
-            }
+            if (!Validates(() => parts.Length == 3, "get keyword usage: get <file in archive> <destination path and filename>")) return;
 
-            if (System.IO.File.Exists(parts[2]))
-            {
-                Console.WriteLine("Destination file " + parts[2] + " allready exists");
-                return;
-            }
+            if (!Validates(() => !System.IO.File.Exists(parts[2]), "Destination file " + parts[2] + " allready exists")) return;
 
-            if (_currentArchive == null || _currentArchive.CurrentVolume == null)
-            {
-                Console.WriteLine("No volume openend. Please open archive and volume using the open keyword");
-                return;
-            }
+            if (!Validates(() => (_currentArchive != null && _currentArchive.CurrentVolume != null), "No volume openend. Please open archive and volume using the open keyword")) return;
 
-            if (!_currentArchive.CurrentVolume.Folder.ContainsFile(parts[1]) || _currentArchive.CurrentVolume.Folder.GetFileData(parts[1])==null)
-            {
-                Console.WriteLine("File " + parts[1] + " not found in current archive/volume. Use command list to view volume contents");
-                return;
-            }
+            if (!Validates(() => _currentArchive.CurrentVolume.Folder.ContainsFile(parts[1]) && _currentArchive.CurrentVolume.Folder.GetFileData(parts[1]) != null, "File " + parts[1] + " not found in current archive/volume. Use command list to view volume contents")) return;
 
+           
             var sourceFileName = parts[1];
             var destinationfileName = parts[2];
             
@@ -177,11 +151,7 @@ namespace RabbitHole
 
         private static void SaveCurrentVolume(String[] parts)
         {
-            if (parts.Length < 2)
-            {
-                Console.WriteLine("No password provided. save keyword usage: save <password>, example: save !#MySecretPa$$wrd");
-                return;
-            }
+            if (!Validates(() => parts.Length == 2, "No password provided. save keyword usage: save <password>, example: save !#MySecretPa$$wrd")) return;
             
             var success = _currentArchive.SaveCurrentVolume(parts[1]);
 
@@ -193,17 +163,13 @@ namespace RabbitHole
 
         private static void OpenArchive(string[] parts)
         {
-            if (parts.Length < 3 || parts[1] == null)
-            {
-                Console.WriteLine("open archive keyword usage: open <path and file name> <password>, example: open c:\\stuff\\myArchive.Rabbit !#MySecretPa$$wrd");
-                return;
-            }
+            if(!Validates(() => parts.Length == 3, "open archive keyword usage: open <path and file name> <password>, example: open c:\\stuff\\myArchive.rabbit !#MySecretPa$$wrd")) return;           
 
             String path = parts[1];
             String fileName="";
 
             if (!path.ToLower().EndsWith(".rabbit"))
-                path += ".Rabbit";
+                path += ".rabbit";
 
             if (path.Contains("\\"))
                 fileName = path.Substring(path.LastIndexOf("\\") + 1);
@@ -214,11 +180,8 @@ namespace RabbitHole
 
             fileName = fileName.Substring(0, fileName.LastIndexOf("."));
 
-            if (!System.IO.File.Exists(path))
-            {
-                Console.WriteLine("Could not find archive with filename " + path);
-                return;
-            }
+            if (!Validates(() => System.IO.File.Exists(path), "Could not find archive with filename " + path)) return;
+           
 
             int length = (int)new System.IO.FileInfo(path).Length;
 
@@ -227,7 +190,7 @@ namespace RabbitHole
             _currentArchive.UserConfirmationFunc = UserConfirmation;
 
             
-            Console.WriteLine("Archive opened");
+            Console.WriteLine("Archive opened. Decrypting volume...");
 
             bool volumeOpened = _currentArchive.OpenVolume(parts[2]);
           
@@ -261,44 +224,34 @@ namespace RabbitHole
 
         private static void CreateNewArchive(string[] parts)
         {
-                        
-            if (!(parts.Length == 3 && IsNumber(parts[2])))
-            {
-                Console.WriteLine("new keyword usage: new <fileName> <size in MB>, example: new myArchive 10" );
-                return;
-            }
-
+            if (!Validates(() => parts.Length == 3 && IsNumber(parts[2]), "new keyword usage: new <fileName> <size in MB>, example: new myArchive 10")) return;
+            
             var fileName = parts[1];
             if (!fileName.ToLower().EndsWith(".rabbit"))
                 fileName += ".rabbit";
 
-            if (System.IO.File.Exists(fileName))
-            {
-                Console.WriteLine("\nFile allready exists");
-                return;
-            }
+            if (!Validates(() => !System.IO.File.Exists(fileName), "\nFile allready exists")) return;
 
-            if (!HasWritePermissionsToFolder(fileName))
-            {
-                Console.WriteLine("You don't seem to have write-permissions to the folder. Open the application as administrator by " +
-                                  "right clicking on the .exe-file and choosing \"Run as Administrator\", or specify a path to another folder");
-                return;
-            }
-
+            if (!Validates(() => HasWritePermissionsToFolder(fileName), "You don't seem to have write-permissions to the folder. " +
+                                                                        "Open the application as administrator by " +
+                                                                        "right clicking on the .exe-file and choosing \"Run as Administrator\", or specify a path to another folder")) return;
+          
 
             byte[] entropyBytes =  CollectRandomInput();
 
-            
-
+           
             Console.WriteLine("Finished collecting data, please wait while archive is filled with random bytes.\n");
             var binaryWriter = new BinaryWriter(new FileStream(fileName, FileMode.CreateNew));
             CryptoUtil.WriteRandomBytes(binaryWriter, int.Parse(parts[2]) * 1048576, entropyBytes, SetProgress);
             binaryWriter.Flush();
             binaryWriter.Close();
-           
 
-           
+
             Console.WriteLine("Finished creating archive.");
+
+            Console.WriteLine("Please choose crypto algoritm: 1=AES, 2=Serpent, 3=Twofish");
+            var algorithmNo = int.Parse((Console.ReadLine()));
+            
 
             Console.Write("Please enter the total number of volumes you want inside your archive: ");
             var noOfVolumes = int.Parse(Console.ReadLine());
@@ -312,7 +265,7 @@ namespace RabbitHole
 
 
             _currentArchive = new Archive(parts[0], fileName, int.Parse(parts[2]) * 1048576); //MB x bytes
-            _currentArchive.CreateVolumes(passwords);
+            _currentArchive.CreateVolumes(algorithmNo, passwords);
 
             Console.WriteLine("\nVolumes created.");
 
@@ -413,18 +366,11 @@ namespace RabbitHole
 
         private static void listFiles()
         {
-            if (_currentArchive == null)
-            {
-                Console.WriteLine("Please open an archive or create a new one.");
-                return;
-            }
 
-            if (_currentArchive.CurrentVolume == null)
-            {
-                Console.WriteLine("Please open a volume in the current archive by specifying the password associated with the volume you want to open.");
-                return;
-            }
+            if (!Validates(() => _currentArchive != null, "Please open an archive or create a new one.")) return;
 
+            if (!Validates(() => _currentArchive.CurrentVolume != null, "Please open a volume in the current archive by specifying the password associated with the volume you want to open.")) return;
+            
             var folder = _currentArchive.CurrentVolume.Folder;
 
             Console.WriteLine("\n" +folder.Files.Count + " files in volume " + _currentArchive.CurrentVolume.VolumeName);
@@ -439,18 +385,13 @@ namespace RabbitHole
 
         }
 
-        private static void addFile(string[] parts)
+        private static void AddFile(string[] parts)
         {
-            if (_currentArchive.CurrentVolume == null)
-            {
-                Console.WriteLine("Please open an archive and volume before adding files");
-                return;
-            }
-            if (parts.Length < 2)
-            {
-                Console.WriteLine("put keyword usage: put <fileName>, example: put c:\\temp\\someFile.ext");
-            }
-
+            if (!Validates(() => _currentArchive.CurrentVolume != null, "Please open an archive and volume before adding files.")) return;
+          
+            if (!Validates(() => parts.Length==2, "put keyword usage: put <fileName>, example: put c:\\temp\\someFile.ext")) return; 
+          
+                       
             var folder = _currentArchive.CurrentVolume.Folder;
 
             var path = parts[1];
@@ -458,23 +399,13 @@ namespace RabbitHole
             if (path.Contains("\\"))
                 fileName = path.Substring(path.LastIndexOf("\\") + 1);
 
-            if (folder.ContainsFile(fileName))
-            {
-                Console.WriteLine("\nThe arhive allready contains a file with the name " + fileName);
-                return;
-            }
+            if (!Validates(() => !folder.ContainsFile(fileName), "\nThe arhive allready contains a file with the name " + fileName)) return;
 
-            if (!System.IO.File.Exists(path))
-            {
-                Console.WriteLine("\nFile not found");
-                return;
-            }
-
+            if (!Validates(() => System.IO.File.Exists(path), "\nFile not found")) return;
+          
 
             byte[] buffer =System.IO.File.ReadAllBytes(path);
-
-            
-
+           
             File file = new File();
             file.Name = fileName;
             file.Data = buffer;
@@ -484,31 +415,15 @@ namespace RabbitHole
                 
         }
 
-        private static SecureString ReadPassword()
+        
+
+        private static bool Validates(Func<bool> predicate, String failedMessage)
         {
-            var pwd = new SecureString();
-            while (true)
-            {
-                ConsoleKeyInfo i = Console.ReadKey(true);
-                if (i.Key == ConsoleKey.Enter)
-                {
-                    break;
-                }
-                else if (i.Key == ConsoleKey.Backspace)
-                {
-                    if (pwd.Length > 0)
-                    {
-                        pwd.RemoveAt(pwd.Length - 1);
-                        Console.Write("\b \b");
-                    }
-                }
-                else
-                {
-                    pwd.AppendChar(i.KeyChar);
-                    Console.Write("*");
-                }
-            }
-            return pwd;
+            if (!predicate())    
+                Console.WriteLine(failedMessage);
+
+            return predicate();
         }
+
     }
 }

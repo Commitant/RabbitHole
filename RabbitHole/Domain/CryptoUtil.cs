@@ -12,16 +12,20 @@ using Org.BouncyCastle.Crypto.Modes;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Crypto.Prng;
+using Org.BouncyCastle.Utilities;
 
 namespace RabbitHole.Domain
 {
     public class CryptoUtil
     {
+      
 
-        public static byte[] EncryptUsingAES256(byte[] dataToEncrypt, byte[] IV, String password)
+        public static byte[] Encrypt256(byte[] dataToEncrypt, byte[] IV, String password, int algorithm)
         {
-            //Set up       
-            CbcBlockCipher engine = new CbcBlockCipher(new RijndaelEngine(256)); //AES-256
+            //Set up                   
+            CbcBlockCipher engine = GetCryptoEngine(algorithm);
+            if (algorithm != 1) Array.Resize(ref IV, 16); //only Rijndael uses 32 byte IV, the other use 16
+
             CbcBlockCipher blockCipher = new CbcBlockCipher(engine); //CBC
             PaddedBufferedBlockCipher cipher = new PaddedBufferedBlockCipher(blockCipher, new Pkcs7Padding()); //Default scheme is PKCS5/PKCS7        
 
@@ -38,12 +42,16 @@ namespace RabbitHole.Domain
             return outputBytes;
         }
 
-       
+      
 
-        public static byte[] DecryptUsingAES256(byte[] encryptedBytes, byte[] IV, String password)
+
+
+        public static byte[] Decrypt256(byte[] encryptedBytes, byte[] IV, String password, int algorithm)
         {
-            //Set up
-            CbcBlockCipher engine = new CbcBlockCipher(new RijndaelEngine(256)); //AES-256
+            //Set up            
+            CbcBlockCipher engine = GetCryptoEngine(algorithm);
+            if (algorithm != 1) Array.Resize(ref IV, 16); //only Rijndael uses 32 byte IV, the other use 16
+
             CbcBlockCipher blockCipher = new CbcBlockCipher(engine); //CBC
             PaddedBufferedBlockCipher cipher = new PaddedBufferedBlockCipher(blockCipher, new Pkcs7Padding()); //Default scheme is PKCS5/PKCS7
 
@@ -57,9 +65,26 @@ namespace RabbitHole.Domain
             var length = cipher.ProcessBytes(encryptedBytes, decryptedBytes, 0);
             int finalBlockLengthWithoutPadding = cipher.DoFinal(decryptedBytes, length); //Do the final block    
 
-            Array.Resize(ref decryptedBytes, decryptedBytes.Length - (32 - finalBlockLengthWithoutPadding)); //remove padding
+
+            int blockSize = 32;
+            if (algorithm != 1) blockSize = 16;
+
+            Array.Resize(ref decryptedBytes, decryptedBytes.Length - (blockSize - finalBlockLengthWithoutPadding)); //remove padding
 
             return decryptedBytes;
+        }
+
+
+        private static CbcBlockCipher GetCryptoEngine(int algorithm)
+        {
+            if (algorithm == 1)
+                return new CbcBlockCipher(new RijndaelEngine(256));
+            else if (algorithm == 2)
+                return new CbcBlockCipher(new SerpentEngine());
+            else if (algorithm == 3)
+                return new CbcBlockCipher(new TwofishEngine());
+
+            else return null;
         }
 
 

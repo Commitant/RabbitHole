@@ -19,6 +19,10 @@ namespace RabbitHole.Domain
 
         public int VolumeNo { get; set; }
 
+        public int Offset { get; set; }
+
+        public int AlgorithmNo { get; set; }
+
 
         public Volume()
         {
@@ -51,13 +55,15 @@ namespace RabbitHole.Domain
             return hashInteger % 1024; //offset between 0 and 1024 bytes
         }
 
-        public void Serialize(Stream stream, string password)
+        public void Serialize(Stream stream, string password, int algorithmNo)
         {
 
             //Volume specification
             //<offset>:IV:length:EncryptedData(passwordHash, folder)
 
             var offset = CalculateOffset(password);
+            Offset = offset;
+
             var IV = CreateIV(BitConverter.GetBytes(DateTime.Now.Ticks), password);
 
             StreamUtil.WriteBytes(stream, CryptoUtil.GetRandomBytes(BitConverter.GetBytes(DateTime.Now.Ticks), offset)); //fill offset with random data
@@ -68,9 +74,10 @@ namespace RabbitHole.Domain
             MemoryStream encryptedStream = new MemoryStream();
             StreamUtil.WriteBytes(encryptedStream, cryptographicHash); //write the hashed password usded for volume verification, 32 bytes
             Folder.Serialize(encryptedStream); //write volume's folder and contained files to encrypted stream
-            byte[] encryptedContents = CryptoUtil.EncryptUsingAES256(encryptedStream.ToArray(), IV, password);
-
+            byte[] encryptedContents = CryptoUtil.Encrypt256(encryptedStream.ToArray(), IV, password, algorithmNo);
+            
             StreamUtil.WriteBytes(stream, BitConverter.GetBytes(encryptedContents.Length)); // serialize the length of the following encrypted data
+            StreamUtil.WriteBytes(stream, new byte[] { (byte)(algorithmNo) });
             StreamUtil.WriteBytes(stream, encryptedContents);   //serialize encrypted data
 
             
@@ -83,8 +90,17 @@ namespace RabbitHole.Domain
             int encryptedDataLength = 4; 
             int passwordHash = 32;
 
-            return offset + IVlength + encryptedDataLength + passwordHash + Folder.GetTotalDataSize();
+            return offset + CalculateVolumeMinimumSize() + Folder.GetTotalDataSize();
 
+        }
+
+        public int CalculateVolumeMinimumSize()
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            Volume volume = new Volume();
+            volume.Serialize(memoryStream, "test", 1);
+
+            return (int)memoryStream.Length - volume.Offset;
         }
 
         public static Volume Deserialize(Stream stream, String password, int maxPossibleSize)
@@ -96,15 +112,16 @@ namespace RabbitHole.Domain
             stream.Seek(offset, SeekOrigin.Current); //moves stream cursor passed offset
             var IV = StreamUtil.ReadBytes(stream, 32);  //read IV
             int encryptedDataLength = BitConverter.ToInt32(StreamUtil.ReadBytes(stream, 4), 0); //read length of the following encrypted data
+            var algorithmNo = Convert.ToInt16(StreamUtil.ReadBytes(stream, 1)[0]);
+            volume.AlgorithmNo = algorithmNo;
 
             if (encryptedDataLength < 32 || encryptedDataLength > maxPossibleSize) //encryptedDataLength is not valid, so the specified password cannot be for this volume.
                 return null;                 
 
-            byte[] encryptedBytes = StreamUtil.ReadBytes(stream, encryptedDataLength);
-            
+            byte[] encryptedBytes = StreamUtil.ReadBytes(stream, encryptedDataLength);            
 
             //decrypt volume
-            byte[] decryptedBytes = CryptoUtil.DecryptUsingAES256(encryptedBytes, IV, password);
+            byte[] decryptedBytes = CryptoUtil.Decrypt256(encryptedBytes, IV, password, algorithmNo);
 
             //deserialize decrypted volume
             MemoryStream decryptedStream = new MemoryStream(decryptedBytes);
@@ -114,7 +131,7 @@ namespace RabbitHole.Domain
             if (!cryptographicHash.SequenceEqual(CryptoUtil.GetSha256Hash(Encoding.UTF8.GetBytes(password))))
                 return null;
 
-            volume.Folder = Folder.Deserialize(decryptedStream);
+            volume.Folder = Folder.Deserialize(decryptedStream);            
 
             return volume; 
 
@@ -127,10 +144,10 @@ namespace RabbitHole.Domain
         }
 
 
-        public void WriteToFile(Stream fileStream, String password)
+        public void WriteToFile(Stream fileStream, String password, int algorithmNo)
         {            
             fileStream.Seek(VolumePosition, SeekOrigin.Begin); //move stream cursor to volume start position (volume offset is part of serialized data)
-            Serialize(fileStream, password);
+            Serialize(fileStream, password, algorithmNo);
         }
 
         public bool VolumeSizeExceedAllocatedSpace(int noOfBytesInArchive, String password)

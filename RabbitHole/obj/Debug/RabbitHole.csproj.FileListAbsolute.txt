@@ -16,3 +16,7 @@ C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Debug\RabbitHole.pdb
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\RabbitHole.exe
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\RabbitHole.pdb
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\BouncyCastle.Crypto.dll
+D:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Debug\RabbitHole.exe.config
+D:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Debug\RabbitHole.exe
+D:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Debug\RabbitHole.pdb
+C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Debug\RabbitHole.csprojResolveAssemblyReference.cache

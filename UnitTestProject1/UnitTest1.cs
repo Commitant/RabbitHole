@@ -71,9 +71,9 @@ namespace UnitTestProject1
             String plainText = "This is the unencrypted secret message";
             String password = "password";
             byte[] IV = CryptoUtil.GetRandomBytes(new byte[32], 32);
-            byte[] encrypted = CryptoUtil.EncryptUsingAES256(Encoding.UTF8.GetBytes(plainText), IV, password);
+            byte[] encrypted = CryptoUtil.Encrypt256(Encoding.UTF8.GetBytes(plainText), IV, password, 1);
 
-            byte[] decrypted = CryptoUtil.DecryptUsingAES256(encrypted, IV, password);
+            byte[] decrypted = CryptoUtil.Decrypt256(encrypted, IV, password, 1);
 
             Assert.AreEqual(plainText, Encoding.UTF8.GetString(decrypted));
 
@@ -88,7 +88,7 @@ namespace UnitTestProject1
             volume.AddFile(CreateFile("test3.txt", 100));
 
             MemoryStream memoryStream = new MemoryStream();
-            volume.Serialize(memoryStream, "password");
+            volume.Serialize(memoryStream, "password", 1);
 
             memoryStream.Seek(0, SeekOrigin.Begin); //start at beginning of stream
             var deserializedVolume = Volume.Deserialize(memoryStream, "password", int.MaxValue);
@@ -108,7 +108,7 @@ namespace UnitTestProject1
         public void TestArchiveOperations()
         {
             //create file on disk
-            var fileName = "c:\\temp\\testArchive2.Rabbit"; //
+            var fileName = "c:\\temp\\testArchive2.rabbit"; //
 
             if (File.Exists(fileName))
                 File.Delete(fileName);
@@ -123,7 +123,7 @@ namespace UnitTestProject1
 
             //create archive with volumes
             var archive  = new Archive(fileName, fileName, sizeInMb * 1048576); //MB x bytes
-            archive.CreateVolumes(new string[] {"p1", "p2", "p3"});
+            archive.CreateVolumes(1, new string[] {"p1", "p2", "p3"});
 
             Assert.IsTrue(archive.OpenVolume("p1"));
             Assert.IsTrue(archive.OpenVolume("p2"));
