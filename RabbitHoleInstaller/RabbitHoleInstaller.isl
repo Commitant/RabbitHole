@@ -267,7 +267,7 @@
 		<row><td>NewBinary20</td><td/><td>&lt;ISProductFolder&gt;\Support\Themes\InstallShield Blue Theme\banner.jpg</td></row>
 		<row><td>NewBinary3</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\Up.ibd</td></row>
 		<row><td>NewBinary4</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\WarningIcon.ibd</td></row>
-		<row><td>NewBinary5</td><td/><td>C:\Users\esr\Downloads\rabbitHoleLogoLarge2.jpg</td></row>
+		<row><td>NewBinary5</td><td/><td>C:\Google Drive\develop\GitRepos\RabbitHole\rabbitHoleLogoLarge2.jpg</td></row>
 		<row><td>NewBinary6</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\CustomSetupIco.ibd</td></row>
 		<row><td>NewBinary7</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\ReinstIco.ibd</td></row>
 		<row><td>NewBinary8</td><td/><td>&lt;ISProductFolder&gt;\Redist\Language Independent\OS Independent\RemoveIco.ibd</td></row>
@@ -3836,7 +3836,7 @@
 		<col def="V0">Data</col>
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
-		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\esr\Downloads\rabbitHoleIcon.ico</td><td>0</td></row>
+		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\rabbitHoleIcon.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -3969,7 +3969,7 @@ RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{020A92E3-8523-4BAD-B083-6FB5945F0FF0}</td></row>
 		<row><td>ISUSSignature</td><td>{9DAF912F-AE5C-4390-8CCA-986E25156454}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewRelease,viewISToday,viewAppFiles,viewUI,viewProject,viewSystemSearch,viewUpgradePaths,viewUpdateService,viewShortcuts</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewRelease,viewISToday,viewAppFiles,viewUI,viewProject,viewSystemSearch,viewUpgradePaths,viewUpdateService,viewShortcuts,viewObjects</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
