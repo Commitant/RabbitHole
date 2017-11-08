@@ -8,6 +8,5 @@ C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Release\RabbitHole.ex
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Release\RabbitHole.exe
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Release\RabbitHole.pdb
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\bin\Release\BouncyCastle.Crypto.dll
-C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Release\RabbitHole.csprojResolveAssemblyReference.cache
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Release\RabbitHole.exe
 C:\Google Drive\develop\GitRepos\RabbitHole\RabbitHole\obj\Release\RabbitHole.pdb
