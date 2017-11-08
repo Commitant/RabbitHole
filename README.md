@@ -1,9 +1,9 @@
 # RabbitHole
-<p>AES-256 encrypted file archive with any number of hidden volumes for plausible deniability.<img        src="https://github.com/eflite/RabbitHole/blob/master/rabbitHoleLogo3.png" align="right"/>
+<p>256 bit encrypted file archive with any number of hidden volumes for plausible deniability.<img        src="https://github.com/eflite/RabbitHole/blob/master/rabbitHoleLogo3.png" align="right"/>
 </p>
 
 * Encrypted file archive
-* AES 256 (Rijndael block cipher)
+* AES 256 (Rijndael block cipher), Serpent or Twofish
 * Bouncy Castle, trusted crypto
 * Any number of hidden volumes
 * Encrypted volumes indistinguishable from random data
@@ -42,7 +42,7 @@ A: That depends on the password you choose for your volumes. If you use a [stron
 ***
 Q: There's other tools for encrypting files and archives out there. Why should I use RabbitHole?
 
-A: We think the combination of properties make the tool interesting. The open source nature and small code base makes the application very easy to review, audit and verify. Plausible deniability through multiple volumes, strong encryption through AES 256 and Bouncy Castle makes it safe and secure. 
+A: We think the combination of properties make the tool interesting. The open source nature and small code base makes the application very easy to review, audit and verify. Plausible deniability through multiple volumes, strong encryption through Bouncy Castle (Rijndael, Serpent or Twofish) makes it safe and secure. 
 ***
 Q: What is plausible deniablity, and why do I need it?
 
