@@ -1,5 +1,5 @@
 # RabbitHole
-<p>256 bit encrypted file archive with any number of hidden volumes for plausible deniability.<img        src="https://github.com/eflite/RabbitHole/blob/master/rabbitHoleLogo3.png" align="right"/>
+<p>256 bit encrypted file archive with any number of hidden volumes for plausible deniability.<img        src="https://github.com/eflite/RabbitHole/blob/master/rabbitHoleLogo5.png" align="right"/>
 </p>
 
 * Encrypted file archive
